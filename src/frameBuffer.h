@@ -11,7 +11,7 @@ public:
 	void clear(const ofColor& color);
 
 	void midLine(int x0, int y0, int x1, int y1);
-	//void angulos
+	void angulos();
 
 
 private:

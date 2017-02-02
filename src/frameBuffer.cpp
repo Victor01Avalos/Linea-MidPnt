@@ -37,28 +37,27 @@ void frameBuffer::midLine(int x0, int y0, int x1, int y1)
 
 	int dx = x1 - x0;
 	int dy = y1 - y0;
-	int d = 2 * dy - dx;
+	int d =  dy - dx;
 	int DeltaNE = 2 * dy;
 	int DeltaE = 2 * (dy - dx);
 	int x = x0;
 	int y = y0;
 
 	putpixel(x0, y0, ofColor::blue);
-	for (x = x0; x <= x1; x++) {
+	
 
 
-		while (x < x1)
+		while (x <= x1)
 		{
-			if (d <= 0)
+			x = x + 1;
+			if (d >= 0)
 			{
 				d = d + DeltaE;
-				x++;
 			}
 
 			else
 			{
 				d = d + DeltaNE;
-				x++;
 				y++;
 			}
 
@@ -68,7 +67,21 @@ void frameBuffer::midLine(int x0, int y0, int x1, int y1)
 
 		}
 	}
+
+void frameBuffer::angulos()
+{
+	int xc = ofGetWidth() / 2;
+	int yc = ofGetHeight() / 2;
+	int x0 = 0;
+	int y0 = 0;
+	for (float angulo = 0; angulo < 360; angulo++) {
+		int x1 = 50 * cos(angulo *PI / 180.0);
+		int y1 = 50 * sin(angulo *PI / 180.0);
+
+		midLine(x0 + xc, y0 + yc, x1 + xc, y1 + yc);
+	}
 }
+
 
 void frameBuffer::FASTputpixel(const int & x, const int & y, const ofColor & color)
 {
