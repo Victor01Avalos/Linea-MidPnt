@@ -12,7 +12,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	
+	//FBuffer.midLine(0, 0, 400, 400);
 	FBuffer.angulos();
 }
 
